@@ -63,6 +63,9 @@ p {
     height: 100%;
     margin: 0 10px;
     position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    z-index: 0; 
 }
 
 .pin {
@@ -82,6 +85,7 @@ p {
     display: none; 
     align-items: center;
     justify-content: center;
+    z-index: 20;
 }
 
 .full-overlay .close-btn {
@@ -91,6 +95,16 @@ p {
     transform: translateX(-50%); 
     font-size: 32px;
     cursor: pointer;
+}
+
+.card-img img {
+    cursor: pointer; 
+}
+
+.main-card:hover {
+    transform: scale(1.05) rotate(10deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10; 
 }
 
 @media (max-width: 768px) {

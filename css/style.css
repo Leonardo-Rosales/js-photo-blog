@@ -63,9 +63,9 @@ p {
     height: 100%;
     margin: 0 10px;
     position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.5s ease, box-shadow 0.5s ease;
-    z-index: 0; 
+    z-index: 0;
 }
 
 .pin {
@@ -81,8 +81,8 @@ p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7); 
-    display: none; 
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 20;
@@ -91,35 +91,82 @@ p {
 .full-overlay .close-btn {
     position: absolute;
     top: 20px;
-    left: 50%; 
-    transform: translateX(-50%); 
-    font-size: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 44px;
+    border: none;
+    font-weight: bold;
+    color: white;
     cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 16px 20px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.close-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+
 .card-img img {
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .main-card:hover {
     transform: scale(1.05) rotate(10deg);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 10; 
+    z-index: 10;
 }
 
 @media (max-width: 768px) {
     .col-4 {
         width: calc(100% / 2);
-        
-       
-    
     }
+
+    .main-header h1 {
+        font-size: 1.5em;
+        /* Ridurre la dimensione del titolo su schermi piccoli */
+    }
+
+    .main-card {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        width: 75%; /* Ridurre ulteriormente la larghezza delle card per dispositivi mobili */
+        margin: 10px auto;
+        /* Ombra più leggera sui dispositivi mobili */
+    }
+
+    .full-overlay img {
+        max-width: 60%; /* L'immagine nell'overlay diventa più piccola sui dispositivi mobili */
+    }
+
+    .main-card:hover {
+        transform: scale(1.05) rotate(5deg);
+        /* Ridurre l'effetto di zoom e rotazione sui dispositivi mobili */
+    }
+
+
+
+
 }
 
 @media (max-width: 576px) {
     .col-4 {
         width: 100%;
-        margin: 0 100px;
-    
+
+    }
+
+    .full-overlay img {
+        max-width: 70%; /* Immagine nell'overlay un po' più piccola */
+    }
+
+    .full-overlay .close-btn {
+        font-size: 1.5em; /* Ridurre la dimensione del bottone di chiusura su schermi piccoli */
+    }
+
+    .main-card {
+        width: 50%; /* Rende le card quasi intere su schermi molto piccoli */
+        margin: 5px auto; /* Piccoli margini per le card */
     }
 }

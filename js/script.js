@@ -1,7 +1,6 @@
 
 const listPhoto = document.querySelector('.row');
 const mainUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=6';
-let photos = [];
 
 const fullOverlay = document.getElementById('fullOverlay');
 const overlayImage = document.getElementById('overlayImage');
@@ -13,13 +12,13 @@ axios
         console.log(res);
         photos = res.data; 
         console.log(photos);
-        appendPhotos(); 
+        appendPhotos(photos); 
     })
     .catch((err) => {
         console.log(err);
     });
 
-function appendPhotos() {
+function appendPhotos(photos) {
     let photoCardHTML = '';
     photos.forEach((photo) => { 
         const { url, title } = photo;
@@ -45,7 +44,7 @@ function appendPhotos() {
      const images = document.querySelectorAll('.thumbnail');
      images.forEach(img => {
          img.addEventListener('click', (event) => {
-             overlayImage.src = event.target.src; 
+             overlayImage.src = event.target.src;  
              fullOverlay.style.display = 'flex'; 
          });
      });

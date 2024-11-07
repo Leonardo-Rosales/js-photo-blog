@@ -1,7 +1,11 @@
 
 const listPhoto = document.querySelector('.row');
 const mainUrl = 'https://jsonplaceholder.typicode.com/photos?_limit=6';
-let photos = []; 
+let photos = [];
+
+const fullOverlay = document.getElementById('fullOverlay');
+const overlayImage = document.getElementById('overlayImage');
+const closeOverlayButton = document.getElementById('closeOverlay');
 
 axios
     .get(mainUrl)
@@ -16,16 +20,17 @@ axios
     });
 
 function appendPhotos() {
+    let photoCardHTML = '';
     photos.forEach((photo) => { 
         const { url, title } = photo;
         console.log(url);
 
-        const photoCardHTML = `
+        photoCardHTML = `
             <div class="col-4">
                 <div class="main-card">
                     <img class="pin" src="./img/pin.svg" alt="">
                     <div class="card-img">
-                        <img src="${url}" alt="">
+                        <img class="thumbnail" src="${url}" alt="">
                     </div>
                     <div class="card-body">
                         <p>${title}</p>
@@ -35,4 +40,18 @@ function appendPhotos() {
         `;
         listPhoto.innerHTML += photoCardHTML;
     });
+
+    
+     const images = document.querySelectorAll('.thumbnail');
+     images.forEach(img => {
+         img.addEventListener('click', (event) => {
+             overlayImage.src = event.target.src; 
+             fullOverlay.style.display = 'flex'; 
+         });
+     });
+ 
+     
+     closeOverlayButton.addEventListener('click', () => {
+         fullOverlay.style.display = 'none'; 
+     });
 }
